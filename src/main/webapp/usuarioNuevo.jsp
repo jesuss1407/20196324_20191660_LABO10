@@ -13,7 +13,7 @@
 <html>
 <head>
     <title>Nuevo usuario</title>
-
+    <jsp:include page="/includes/headCss.jsp"></jsp:include>
 </head>
 <body>
 <div class='container'>
@@ -21,36 +21,41 @@
     <div class="row mb-4">
         <div class="col"></div>
         <div class="col-md-6">
-            <h1 class='mb-3'>Nuevo usuario</h1>
+            <br>
+            <h1 class='mb-3'>Registrar usuario</h1>
             <hr>
             <form method="POST" action="UsuarioServlet?action=crear">
                 <div class="mb-3">
                     <label class="form-label" for="nombre">Nombre</label>
-                    <input type="text" class="form-control form-control-sm" id="nombre" name="nombre">
+                    <input type="text" class="form-control form-control-sm" id="nombre" name="nombre" pattern="[a-zA-Z]+" title="Ingrese solo letras" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="apellido">Apellido</label>
-                    <input type="text" class="form-control form-control-sm" id="apellido" name="apellido">
+                    <input type="text" class="form-control form-control-sm" id="apellido" name="apellido" pattern="[a-zA-Z]+" title="Ingrese solo letras" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="edad">Edad</label>
-                    <input type="number" class="form-control form-control-sm" id="edad" name="edad" min="18" max="30" title="Debe tener de entre 18 a 30 años">
+                    <input type="number" class="form-control form-control-sm" id="edad" name="edad" min="18" max="29" title="Debe tener de entre 18 a 30 años" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="idcodigo">Codigo PUCP</label>
-                    <input type="tel" class="form-control form-control-sm" id="idcodigo" name="idcodigo" pattern="[0-9]{8}" title="Debe ingresar 8 dígitos numericos">
+                    <input type="tel" class="form-control form-control-sm" id="idcodigo" name="idcodigo" pattern="[0-9]{8}" title="Debe ingresar 8 dígitos numericos" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="correo">Correo PUCP</label>
-                    <input type="email" class="form-control form-control-sm" id="correo" name="correo">
+                    <input type="email" class="form-control form-control-sm" id="correo" name="correo" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="especialidad">Especialidad</label>
-                    <input type="text" class="form-control form-control-sm" id="especialidad" name="especialidad">
+                    <input type="text" class="form-control form-control-sm" id="especialidad" name="especialidad" required>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="contrasena">Contraseña</label>
-                    <input type="text" class="form-control form-control-sm" id="contrasena" name="contrasena">
+                    <label class="form-label" >Contraseña</label>
+                    <input type="password" class="form-control form-control-sm" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="contrasena">Confirme contraseña</label>
+                    <input type="password" class="form-control form-control-sm" id="contrasena" name="contrasena" pattern="(?=^.{6,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Contraseña con una mayúscula, un número y un carácter especial" required>
                 </div>
 
 
