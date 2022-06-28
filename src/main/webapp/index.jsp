@@ -26,6 +26,7 @@
 <body>
 <body class="text-center" background="fondo.jpg">
 <main class="form-signin">
+
     <form method="post" action="<%=request.getContextPath()%>/LoginServlet">
         <img class="mb-4" src="logo.png" alt="" width="250" height="250">
         <h1 class="h3 mb-3 fw-normal">Ingresar a la plataforma</h1>
