@@ -26,11 +26,11 @@ public class UsuarioServlet extends HttpServlet {
         switch (action) {
             case "lista":
                 //request.setAttribute("listaEmpleados", estudianteDao.listarViajes());
-                view = request.getRequestDispatcher("lista.jsp");
+                view = request.getRequestDispatcher("index.jsp");
                 view.forward(request, response);
                 break;
             case "agregar":
-                view = request.getRequestDispatcher("/formularioNuevo.jsp");
+                view = request.getRequestDispatcher("/usuarioNuevo.jsp");
                 view.forward(request, response);
                 break;
         }
@@ -38,24 +38,25 @@ public class UsuarioServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        EstudianteBean e = new EstudianteBean();
-        e.setIdcodigo(Integer.parseInt(request.getParameter("idcodigo")));
-        e.setNombre(request.getParameter("nombre"));
-        e.setApellido(request.getParameter("apellido"));
-        e.setEdad(Integer.parseInt(request.getParameter("edad")));
-        e.setEspecialidad(request.getParameter("especialidad"));
-        e.setCorreo(request.getParameter("coreo"));
-        e.setContasena_hashed(request.getParameter("contrasena"));
+        request.setCharacterEncoding("UTF-8");
+        String action = request.getParameter("action") == null ? "lista" : request.getParameter("action");
 
         EstudianteDao estudianteDao = new EstudianteDao();
-        if (request.getParameter("employee_id") == null) {
-            try {
-                estudianteDao.guardarUsuario(e);
-                response.sendRedirect("UsuarioServlet?msg=Empleado creado exitosamente");
-            } catch (SQLException ex) {
-                response.sendRedirect("UsuarioServlet?err=Error al crear empleado");
-            }
+        switch (action){
+            case "crear":
+
+            int idcodigo=Integer.parseInt(request.getParameter("idcodigo"));
+            String nombre= request.getParameter("nombre");
+            String apellido=request.getParameter("apellido");
+            int edad = Integer.parseInt(request.getParameter("edad"));
+            String especialidad=request.getParameter("especialidad");
+            String correo=request.getParameter("correo");
+            String contrasena_hashed=request.getParameter("contrasena");
+
+
+            estudianteDao.crear(idcodigo,nombre,apellido,edad,especialidad,correo,contrasena_hashed);
+            response.sendRedirect(request.getContextPath()+"/LoginServlet");
+            break;
 
         }
     }

@@ -8,7 +8,6 @@
 <%@page import="java.util.ArrayList" %>
 <%@ page import="com.example.laboratorio10_grupo3.Beans.EstudianteBean" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
-<jsp:useBean scope="request" id="listaTrabajos" type="java.util.ArrayList<com.example.laboratorio10_grupo3.Beans.EstudianteBean>"/>
 
 <!DOCTYPE html>
 <html>
@@ -24,7 +23,7 @@
         <div class="col-md-6">
             <h1 class='mb-3'>Nuevo usuario</h1>
             <hr>
-            <form method="POST" action="UsuarioServlet">
+            <form method="POST" action="UsuarioServlet?action=crear">
                 <div class="mb-3">
                     <label class="form-label" for="nombre">Nombre</label>
                     <input type="text" class="form-control form-control-sm" id="nombre" name="nombre">
@@ -38,8 +37,8 @@
                     <input type="number" class="form-control form-control-sm" id="edad" name="edad" min="18" max="30" title="Debe tener de entre 18 a 30 años">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="codigo">Codigo PUCP</label>
-                    <input type="tel" class="form-control form-control-sm" id="codigo" name="codigo" pattern="[0-9]{8}" title="Debe ingresar 8 dígitos numericos">
+                    <label class="form-label" for="idcodigo">Codigo PUCP</label>
+                    <input type="tel" class="form-control form-control-sm" id="idcodigo" name="idcodigo" pattern="[0-9]{8}" title="Debe ingresar 8 dígitos numericos">
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="correo">Correo PUCP</label>

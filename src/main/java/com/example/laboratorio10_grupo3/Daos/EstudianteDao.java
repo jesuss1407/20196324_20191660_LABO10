@@ -62,25 +62,28 @@ public class EstudianteDao extends DaoBase {
 
         return estudiante;
     }
-    public void guardarUsuario(EstudianteBean estudiante) throws SQLException {
+
+    public void crear(int idcodigo,String nombre,String apellido,int edad,String especialidad,String correo,String contrasena_hashed)  {
 
         String sql = "INSERT INTO estudiantes (idcodigo, nombre,apellido, edad, especialidad,status,correo, contrasena_hashed)  \n" +
-                "VALUES (?, ?,?, ?, ?, 'normal', ?, sha2('?',256) );";
+                "VALUES (?, ?,?, ?, ?, 'normal', ?, sha2(?,256) );";
 
-        try (Connection conn = this.getConection();
-             PreparedStatement pstmt = conn.prepareStatement(sql);) {
-            this.setUsuarioParams(pstmt, estudiante);
+        try(Connection conn= this.getConection();
+            PreparedStatement pstmt= conn.prepareStatement(sql)){
+            pstmt.setInt(1, idcodigo);
+            pstmt.setString(2, nombre);
+            pstmt.setString(3,apellido );
+            pstmt.setInt(4 ,edad);
+            pstmt.setString(5, especialidad);
+            pstmt.setString(6, correo);
+            pstmt.setString(7, contrasena_hashed);
             pstmt.executeUpdate();
+
+        }catch(SQLException e) {
+            System.out.println("Hubo un error en la conexión!");
+            e.printStackTrace();
         }
-    }
-    private void setUsuarioParams(PreparedStatement pstmt, EstudianteBean estudiante) throws SQLException {
-        pstmt.setInt(1, estudiante.getIdcodigo());
-        pstmt.setString(2, estudiante.getNombre());
-        pstmt.setString(3, estudiante.getApellido());
-        pstmt.setInt(4 ,estudiante.getEdad());
-        pstmt.setString(5, estudiante.getEspecialidad());
-        pstmt.setString(6, estudiante.getCorreo());
-        pstmt.setString(7, estudiante.getContasena_hashed());
+
 
     }
 
