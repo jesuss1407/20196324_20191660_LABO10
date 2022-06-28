@@ -1,13 +1,12 @@
 package com.example.laboratorio10_grupo3.Daos;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+
 import com.example.laboratorio10_grupo3.Beans.EstudianteBean;
 import com.example.laboratorio10_grupo3.Daos.EstudianteDao;
 
-public class EstudianteDao extends DaoBase{
+public class EstudianteDao extends DaoBase {
 
     public EstudianteBean obtenerUsuario(int idcodigo) {
 
@@ -39,6 +38,7 @@ public class EstudianteDao extends DaoBase{
 
         return estudiante;
     }
+
     public EstudianteBean validarUsuarioPassword(String usuario, String contrasena) {
 
         EstudianteBean estudiante = null;
@@ -62,4 +62,9 @@ public class EstudianteDao extends DaoBase{
 
         return estudiante;
     }
+
+    public ArrayList<EstudianteBean> listarViajes() {
+
+    }
+
 }
