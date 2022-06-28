@@ -26,7 +26,7 @@ public class UsuarioServlet extends HttpServlet {
         switch (action) {
             case "lista":
                 //request.setAttribute("listaEmpleados", estudianteDao.listarViajes());
-                view = request.getRequestDispatcher("index.jsp");
+                view = request.getRequestDispatcher("lista.jsp");
                 view.forward(request, response);
                 break;
             case "agregar":

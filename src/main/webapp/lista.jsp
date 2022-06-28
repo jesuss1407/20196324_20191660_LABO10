@@ -9,8 +9,12 @@
 <html>
 <head>
     <title>Title</title>
+    <jsp:include page="/includes/headCss.jsp"></jsp:include>
 </head>
 <body>
+<jsp:include page="/includes/navbar.jsp">
+    <jsp:param name="page" value=""/>
+</jsp:include>
 
 </body>
 </html>

@@ -17,10 +17,6 @@
 </head>
 <body>
 <div class='container'>
-    <jsp:include page="/includes/navbar.jsp">
-        <jsp:param name="page" value=""/>
-    </jsp:include>
-
     <div class="row mb-4">
         <div class="col"></div>
         <div class="col-md-6">
