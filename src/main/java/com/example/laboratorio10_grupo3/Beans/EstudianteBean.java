@@ -8,6 +8,24 @@ public class EstudianteBean {
     private int edad;
     private String especialidad;
     private String status;
+    private String correo;
+    private String contasena_hashed;
+
+    public String getContasena_hashed() {
+        return contasena_hashed;
+    }
+
+    public void setContasena_hashed(String contasena_hashed) {
+        this.contasena_hashed = contasena_hashed;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
 
     public int getIdcodigo() {
         return idcodigo;

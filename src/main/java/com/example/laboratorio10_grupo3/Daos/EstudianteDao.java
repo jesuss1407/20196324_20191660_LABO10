@@ -62,6 +62,29 @@ public class EstudianteDao extends DaoBase {
 
         return estudiante;
     }
+    public void guardarUsuario(EstudianteBean estudiante) throws SQLException {
+
+        String sql = "INSERT INTO estudiantes (idcodigo, nombre,apellido, edad, especialidad,status,correo, contrasena_hashed)  \n" +
+                "VALUES (?, ?,?, ?, ?, 'normal', ?, sha2('?',256) );";
+
+        try (Connection conn = this.getConection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);) {
+            this.setUsuarioParams(pstmt, estudiante);
+            pstmt.executeUpdate();
+        }
+    }
+    private void setUsuarioParams(PreparedStatement pstmt, EstudianteBean estudiante) throws SQLException {
+        pstmt.setInt(1, estudiante.getIdcodigo());
+        pstmt.setString(2, estudiante.getNombre());
+        pstmt.setString(3, estudiante.getApellido());
+        pstmt.setInt(4 ,estudiante.getEdad());
+        pstmt.setString(5, estudiante.getEspecialidad());
+        pstmt.setString(6, estudiante.getCorreo());
+        pstmt.setString(7, estudiante.getContasena_hashed());
+
+    }
+
+
 
 
 
