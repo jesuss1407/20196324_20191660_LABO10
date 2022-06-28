@@ -63,8 +63,6 @@ public class EstudianteDao extends DaoBase {
         return estudiante;
     }
 
-    public ArrayList<EstudianteBean> listarViajes() {
 
-    }
 
 }
