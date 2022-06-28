@@ -42,7 +42,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="correo">Correo PUCP</label>
-                    <input type="email" class="form-control form-control-sm" id="correo" name="email">
+                    <input type="email" class="form-control form-control-sm" id="correo" name="correo">
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="especialidad">Especialidad</label>
