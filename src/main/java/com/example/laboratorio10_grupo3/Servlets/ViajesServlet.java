@@ -23,8 +23,8 @@ public class ViajesServlet extends HttpServlet {
         switch (action) {
             case "listar":
                 String estudiantes_idcodigo = request.getParameter("estudiantes_idcodigo");
-                request.setAttribute("listaSuperviviente", viajesDao.listar(Integer.parseInt(estudiantes_idcodigo)));
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("Superviviente.jsp");
+                request.setAttribute("listaViajes", viajesDao.listar(Integer.parseInt(estudiantes_idcodigo)));
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("lista.jsp");
                 requestDispatcher.forward(request, response);
                 break;
         }
