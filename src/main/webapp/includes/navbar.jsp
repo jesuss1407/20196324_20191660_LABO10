@@ -15,10 +15,12 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link "
+                    <b class="nav-link "
                        href="<%=request.getContextPath()%>/UsuarioServlet">
                         Mis viajes
-                    </a>
+                    </b>
+                </li>
+                <li class="nav-item">
                 </li>
 
                 <div class="form-inline font-italic my-2 my-lg-0">

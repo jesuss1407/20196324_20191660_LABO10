@@ -18,12 +18,12 @@ import java.sql.SQLException;
 public class ViajesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action") == null ? "listar" : request.getParameter("action");
+        String action = request.getParameter("action") == null ? "listarViaje" : request.getParameter("action");
         ViajesDao viajesDao = new ViajesDao();
         switch (action) {
-            case "listar":
+            case "listarViaje":
                 String estudiantes_idcodigo = request.getParameter("estudiantes_idcodigo");
-                request.setAttribute("listaViajes", viajesDao.listar(Integer.parseInt(estudiantes_idcodigo)));
+                request.setAttribute("lista", viajesDao.listarViaje(Integer.parseInt(estudiantes_idcodigo)));
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("lista.jsp");
                 requestDispatcher.forward(request, response);
                 break;
