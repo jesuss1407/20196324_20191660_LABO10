@@ -7,26 +7,36 @@
 
 <nav class="navbar navbar-expand-md navbar-dark bg-primary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="<%=request.getContextPath()%>">INICIO</a>
+        <% if (empleadoLogueado.getIdcodigo() != 0) { %>
+        <a class="navbar-brand" href="<%=request.getContextPath()%>">BIENVENIDO, <%=empleadoLogueado.getNombre()%> <%=empleadoLogueado.getApellido()%></a>
+        <% } %>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav">
+
                 <li class="nav-item">
-                    <b class="nav-link "
-                       href="<%=request.getContextPath()%>/UsuarioServlet">
-                        Mis viajes
-                    </b>
                 </li>
-                <li class="nav-item">
+                <li>
                 </li>
 
                 <div class="form-inline font-italic my-2 my-lg-0">
                     <% if (empleadoLogueado.getIdcodigo() != 0) { %>
-                    BIENVENIDO <%=empleadoLogueado.getNombre()%> <%=empleadoLogueado.getApellido()%>
-                    (<a href="<%=request.getContextPath()%>/LoginServlet?action=logout">Cerrar sesión</a>)
+                    <li class="nav-item">
+                    </li>
+                    <li class="nav-item">
+                    </li>
+                    <li class="nav-item">
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link "
+                           href="<%=request.getContextPath()%>/ViajesServlet">
+                            Mis viajes
+                        </a>
+                    </li>
+                    (<a class="nav-link"  href="<%=request.getContextPath()%>/LoginServlet?action=logout">Cerrar sesión</a>)
                     <% } %>
                 </div>
             </ul>

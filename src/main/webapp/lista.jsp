@@ -27,7 +27,9 @@
     </jsp:include>
     <div class="pb-5 pt-4 px-3 titlecolor d-flex justify-content-between align-items-center">
         <div class="col-lg-6">
-            <h1 class='text-light'>Menu de Viajes</h1>
+            <br>
+            <br>
+            <h1 class='text-light'>Historial de viajes</h1>
         </div>
 
     </div>
@@ -58,6 +60,8 @@
             </div>
         </div>
         <p> </p>
+        <br>
+        <br>
         <table class="table table-dark table-transparent table-hover">
             <thead>
             <tr>
@@ -73,9 +77,8 @@
                 <th># DE BOLETOS</th>
                 <th> </th>
                 <th>COSTO TOTAL</th>
-                <th> </th>
 
-                <th> </th>
+
             </tr>
             </thead>
             <tbody>
@@ -95,14 +98,13 @@
                 <td><%=viaje.getCantidadcompra()%> </td>
                 <td></td>
                 <td><%=viaje.getCosto_total()%> </td>
-                <td></td>
+
 
 
 
             </tr>
             <%}%>
 
-            <td></td>
             </tbody>
         </table>
 

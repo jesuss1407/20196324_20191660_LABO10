@@ -7,7 +7,7 @@
     </title>
     <style>
         body {
-            background-color: #131212
+            background-image: url("fondo.jpg");
         }
 
         .container {
@@ -22,7 +22,7 @@
         .navbar {
             padding-left: 20px !important;
             padding-right: 20px !important;
-            background-color: rgb(255 227 51 / 94%) !important;
+            background-color: rgba(6, 21, 122, 0.94) !important;
         }
 
         .table-transparent {
@@ -33,6 +33,8 @@
             background-color: #1d1d1d;
             padding-left: 30px;
             padding-right: 30px;
+            padding-bottom: 50px;
+            padding-top: 40px;
         }
 
         thead {
