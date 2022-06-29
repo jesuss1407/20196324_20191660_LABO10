@@ -11,8 +11,8 @@
 <%@ page import="com.example.laboratorio10_grupo3.Beans.ViajesBean" %>
 <%@ page import="java.util.Objects" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="listaViaje" scope="request" type="java.util.ArrayList<com.example.laboratorio10_grupo3.Beans.ViajesBean>" />
 
-<% ArrayList<ViajesBean> listaViaje = (ArrayList<ViajesBean>) request.getAttribute("lista");%>
 
 <html>
 
@@ -34,7 +34,7 @@
     <div class="tabla">
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            Añadir Zombie
+            Añadir Nuevo Viaje
         </button>
 
         <!-- Modal -->
@@ -42,7 +42,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Añadir Zombie</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Añadir Nuevo Viaje</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -87,12 +87,13 @@
                 <td><%=viaje.getFecha_reserva()%></td>
                 <td><%=viaje.getFecha_viaje()%></td>
                 <td></td>
-                <td><%=viaje.getCiudad_origen()%> horas</td>
+                <td><%=viaje.getCiudad_origen()%></td>
                 <td></td>
                 <td><%=viaje.getCiudad_destino()%> </td>
                 <td></td>
                 <td><%=viaje.getSeguro()%> </td>
                 <td><%=viaje.getCantidadcompra()%> </td>
+                <td></td>
                 <td><%=viaje.getCosto_total()%> </td>
                 <td></td>
 

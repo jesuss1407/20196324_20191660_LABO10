@@ -21,14 +21,14 @@ public class ViajesDao extends DaoBase {
             try (ResultSet resultSet = pstmt.executeQuery();) {
                 while (resultSet.next()) {
                     ViajesBean p = new ViajesBean();
-                    p.setIdviajes(Integer.parseInt(resultSet.getString(1)));
+                    p.setIdviajes(resultSet.getInt(1));
                     p.setFecha_reserva(resultSet.getString(2));
                     p.setFecha_viaje(resultSet.getString(3));
                     p.setCiudad_origen(resultSet.getString(4));
                     p.setCiudad_destino(resultSet.getString(5));
                     p.setSeguro(resultSet.getString(6));
-                    p.setCantidadcompra(Integer.parseInt(resultSet.getString(7)));
-                    p.setCosto_total(Integer.parseInt(resultSet.getString(8)));
+                    p.setCantidadcompra(resultSet.getInt(7));
+                    p.setCosto_total(resultSet.getInt(8));
 
                     listaViaje.add(p);
                 }
@@ -39,5 +39,26 @@ public class ViajesDao extends DaoBase {
         }
         return listaViaje;
     }
+    public int  obteneridCorreo(String correo) {
 
+        Integer id = null;
+        String sql = "select idcodigo from estudiantes where correo = ?";
+
+        try (Connection conn = this.getConection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);) {
+
+            pstmt.setString(1, correo);
+
+            try (ResultSet rs = pstmt.executeQuery();) {
+
+                if (rs.next()) {
+                    id = rs.getInt(1);
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return id;
+    }
 }

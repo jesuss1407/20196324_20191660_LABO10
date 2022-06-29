@@ -1,4 +1,5 @@
 package com.example.laboratorio10_grupo3.Servlets;
+import com.example.laboratorio10_grupo3.Daos.ViajesDao;
 import com.example.laboratorio10_grupo3.Beans.EstudianteBean;
 import com.example.laboratorio10_grupo3.Daos.EstudianteDao;
 
@@ -51,7 +52,15 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("empleadoLogueado", estudiante);
             session.setMaxInactiveInterval(60 * 10);
 
-            response.sendRedirect(request.getContextPath() + "/UsuarioServlet");
+            //request.setAttribute("username",usuario);
+            //response.sendRedirect(request.getContextPath() + "/ViajesServlet");
+
+            ViajesDao viajesDao = new ViajesDao();
+            int estudiantes_idcodigo = viajesDao.obteneridCorreo(usuario);
+
+            request.setAttribute("listaViaje", viajesDao.listarViaje(estudiantes_idcodigo));
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("lista.jsp");
+            requestDispatcher.forward(request, response);
         } else {
             response.sendRedirect(request.getContextPath() + "/LoginServlet?error");
         }
