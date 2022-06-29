@@ -13,6 +13,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:useBean id="listaViaje" scope="request" type="java.util.ArrayList<com.example.laboratorio10_grupo3.Beans.ViajesBean>" />
 
+<%@ page import="java.time.LocalDate" %>
+<%@ page import="java.time.*" %>
 
 <html>
 
@@ -29,15 +31,14 @@
         <div class="col-lg-6">
             <br>
             <br>
-            <h1 class='text-light'>Historial de viajes</h1>
+            <h1 class='text-light'>Mis viajes</h1>
 
         </div>
 
     </div>
     <div class="tabla">
 
-        <br>
-        <br>
+
         <table class="table table-dark table-transparent table-hover">
             <thead>
             <tr>
@@ -51,8 +52,9 @@
                 <th></th>
                 <th>EMPRESA DE SEGUROS</th>
                 <th># DE BOLETOS</th>
-                <th> </th>
                 <th>COSTO TOTAL</th>
+
+                <th>OPCIONES</th>
 
 
             </tr>
@@ -72,10 +74,38 @@
                 <td></td>
                 <td><%=viaje.getSeguro()%> </td>
                 <td><%=viaje.getCantidadcompra()%> </td>
-                <td></td>
                 <td><%=viaje.getCosto_total()%> </td>
 
+                <% String[] split = viaje.getFecha_viaje().split("-");%>
+                <%  LocalDate date1 = LocalDate.now();
+                    LocalDate date2 = LocalDate.of(Integer. parseInt(split[0]), Integer. parseInt(split[1]), Integer. parseInt(split[2]));
+                    // compareTo() method
+                    int diff = date1.compareTo(date2);%>
 
+                <% if(diff > 0) {%>
+                <td>
+
+                    <a onclick="return confirm('Tu boleto ya caducó');" type="button" class="btn btn-danger" disabled>
+                        Caducado
+                    </a>
+
+                </td>
+                <%} else if (diff < 0) {%>
+                <td>
+
+                    <a href="<%=request.getContextPath()%>/ViajesServlet?action=editar&id=<%=viaje.getIdviajes()%>"
+                       type="button" class="btn btn-primary">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+
+                    <a onclick="return confirm('¿Estas seguro de borrar?');"
+                       href="<%=request.getContextPath()%>/ViajesServlet?action=editar&id=<%=viaje.getIdviajes()%>"
+                       type="button" class="btn btn-danger">
+                        <i class="bi bi-trash"></i>
+                    </a>
+                </td>
+
+                <%}%>
 
 
             </tr>

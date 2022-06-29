@@ -16,7 +16,7 @@
         }
 
         .titlecolor {
-            background: linear-gradient(0deg, #1d1d1d 0%, #525252 100%);
+            background: linear-gradient(0deg, #1d1d1d 0%, #525252 130%);
         }
 
         .navbar {

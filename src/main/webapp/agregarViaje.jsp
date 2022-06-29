@@ -35,7 +35,7 @@
 
     </div>
     <div class="tabla">
-
+        <% String code = String.valueOf(codigo);%>
         <section class="vh-100 gradient-custom">
             <div class="container py-5 h-100">
                 <div class="row justify-content-center align-items-center h-100">
@@ -45,7 +45,7 @@
                                 <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Datos de la compra</h3>
 
                                 <form method="POST" action="ViajesServlet?action=crear">
-                                    <input disabled class="form-control form-control-lg" id="idcodigo" name="idcodigo" value="<%=codigo%>">
+                                    <input disabled class="form-control form-control-lg" id="idcodigo" name="idcodigo" value="<%=code%>">
                                     <br>
                                     <div class="row">
                                         <div class="col-md-6 mb-4 d-flex align-items-center">

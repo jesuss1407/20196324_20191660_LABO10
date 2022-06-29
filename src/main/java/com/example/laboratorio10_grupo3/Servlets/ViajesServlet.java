@@ -40,6 +40,7 @@ public class ViajesServlet extends HttpServlet {
                 view = request.getRequestDispatcher("agregarViaje.jsp");
                 view.forward(request, response);
                 break;
+
         }
     }
 
@@ -59,7 +60,8 @@ public class ViajesServlet extends HttpServlet {
         switch (action){
             case "crear":
 
-                int idcodigo= Integer.parseInt(request.getParameter("idcodigo"));
+                String code = request.getParameter("idcodigo");
+                int idcodigo = Integer.parseInt(code);
                 int idviajes= value;
                 String fecha_reserva= request.getParameter("fecha_reserva");
                 String fecha_viaje=request.getParameter("fecha_viaje");
