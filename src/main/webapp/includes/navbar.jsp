@@ -36,6 +36,12 @@
                             Mis viajes
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link "
+                           href="<%=request.getContextPath()%>/ViajesServlet?action=agregarViaje">
+                             Añadir viaje
+                        </a>
+                    </li>
                     (<a class="nav-link"  href="<%=request.getContextPath()%>/LoginServlet?action=logout">Cerrar sesión</a>)
                     <% } %>
                 </div>
