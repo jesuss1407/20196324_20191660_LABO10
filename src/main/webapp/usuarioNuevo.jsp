@@ -15,14 +15,19 @@
     <title>Nuevo usuario</title>
     <jsp:include page="/includes/headCss.jsp"></jsp:include>
 </head>
-<body>
-<div class='container'>
-    <div class="row mb-4">
+<body background="fondo.jpg">
+<div class='container'  >
+    <br>
+    <br>
+    <div class="row mb-4" >
         <div class="col"></div>
-        <div class="col-md-6">
+        <br>
+        <br>
+        <div class="col-md-6" style="background-color: #eee" >
             <br>
             <h1 class='mb-3'>Registrar usuario</h1>
             <hr>
+
             <form method="POST" action="UsuarioServlet?action=crear">
                 <div class="mb-3">
                     <label class="form-label" for="nombre">Nombre</label>
@@ -58,8 +63,10 @@
                 </div>
 
 
-                <a href="<%= request.getContextPath()%>/UsuarioServlet" class="btn btn-danger">Cancelar</a>
+                <a href="<%= request.getContextPath()%>/LoginServlet" class="btn btn-danger">Cancelar</a>
                 <input type="submit" value="Guardar" class="btn btn-primary"/>
+                <br>
+                <br>
             </form>
         </div>
         <div class="col"></div>

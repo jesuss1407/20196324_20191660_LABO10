@@ -25,31 +25,42 @@
 </head>
 <body>
 <body class="text-center" background="fondo.jpg">
-<main class="form-signin">
+<main class="form-signin" >
+    <div class="container h-100" >
+        <div class="row d-flex justify-content-center align-items-center h-100" style="width:120%">
+            <div class="row d-flex justify-content-center align-items-center h-100"  style="width:550%">
 
-    <form method="post" action="<%=request.getContextPath()%>/LoginServlet">
-        <img class="mb-4" src="logo.png" alt="" width="250" height="250">
-        <h1 class="h3 mb-3 fw-normal">Ingresar a la plataforma</h1>
+                <form method="post" action="<%=request.getContextPath()%>/LoginServlet" style="background-color: #000000" style="width:150%">
+                    <br>
+                    <br>
+                    <img class="mb-4" src="logo.png" alt="" width="180" height="180">
+                    <h1 class="text-white mb-4">Bienvenido Televiajero</h1>
+                    <div class="form-floating">
 
-        <div class="form-floating">
-            <input type="text" class="form-control" id="floatingInput" name="username"
-                   placeholder="name@example.com">
-            <label for="floatingInput">Email address</label>
+                        <input type="text" class="form-control" id="floatingInput" name="username"
+                               placeholder="name@example.com">
+                        <label for="floatingInput">Usuario</label>
+
+                    </div>
+
+                    <div class="form-floating">
+                        <input type="password" class="form-control" id="floatingPassword" name="password"
+                               placeholder="Password">
+                        <label for="floatingPassword">Contraseña</label>
+                    </div>
+                    <% if (request.getParameter("error") != null) { %>
+                    <div class="text-danger mb-2">Error en usuario o contraseña</div>
+                    <%}%>
+                    <button class="w-100 btn btn-lg btn-primary" type="submit">Ingresar</button>
+                    <br>
+                    <br>
+                    <a href="<%= request.getContextPath()%>/UsuarioServlet?action=agregar" >Soy nuevo y quiero registrarme</a>
+                    <br>
+                    <br>
+                </form>
+            </div>
         </div>
-        <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" name="password"
-                   placeholder="Password">
-            <label for="floatingPassword">Password</label>
-        </div>
-        <% if (request.getParameter("error") != null) { %>
-        <div class="text-danger mb-2">Error en usuario o contraseña</div>
-        <%}%>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-        <br>
-        <br>
-        <a href="<%= request.getContextPath()%>/UsuarioServlet?action=agregar" class="btn btn-dark">Soy nuevo y quiero registrarme</a>
-
-    </form>
+    </div>
 </main>
 </body>
 </body>
