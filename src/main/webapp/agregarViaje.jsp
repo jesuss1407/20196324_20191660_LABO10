@@ -13,7 +13,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%@ page import="java.util.Random" %>
-
+<jsp:useBean id="codigo" scope="request" type="java.lang.Integer" />
 <html>
 
 <jsp:include page="/static/head.jsp">
@@ -45,7 +45,7 @@
                                 <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Datos de la compra</h3>
 
                                 <form method="POST" action="ViajesServlet?action=crear">
-                                    <input type="text" class="form-control form-control-lg" id="idcodigo" name="idcodigo"/>
+                                    <input disabled class="form-control form-control-lg" id="idcodigo" name="idcodigo" value="<%=codigo%>">
                                     <br>
                                     <div class="row">
                                         <div class="col-md-6 mb-4 d-flex align-items-center">

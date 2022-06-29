@@ -38,7 +38,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link "
-                           href="<%=request.getContextPath()%>/ViajesServlet?action=agregarViaje">
+                           href="<%=request.getContextPath()%>/ViajesServlet?action=agregarViaje&id=<%=empleadoLogueado.getIdcodigo()%>">
                              Añadir viaje
                         </a>
                     </li>

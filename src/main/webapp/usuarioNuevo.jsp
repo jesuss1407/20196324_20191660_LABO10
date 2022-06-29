@@ -28,7 +28,7 @@
             <h1 class='mb-3'>Registrar usuario</h1>
             <hr>
 
-            <form method="POST" action="UsuarioServlet?action=crear">
+            <form method="POST"  action="UsuarioServlet?action=crear" >
                 <div class="mb-3">
                     <label class="form-label" for="nombre">Nombre</label>
                     <input type="text" class="form-control form-control-sm" id="nombre" name="nombre" pattern="[a-zA-Z]+" title="Ingrese solo letras" required>
@@ -53,20 +53,56 @@
                     <label class="form-label" for="especialidad">Especialidad</label>
                     <input type="text" class="form-control form-control-sm" id="especialidad" name="especialidad" required>
                 </div>
+
                 <div class="mb-3">
-                    <label class="form-label" >Contraseña</label>
-                    <input type="password" class="form-control form-control-sm" required>
+                    <label class="form-label" for="contrasena0">Contraseña</label>
+                    <input type="password" class="form-control form-control-sm"  id="contrasena0" name="contrasena0" >
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="contrasena">Confirme contraseña</label>
                     <input type="password" class="form-control form-control-sm" id="contrasena" name="contrasena" pattern="(?=^.{6,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Contraseña con una mayúscula, un número y un carácter especial" required>
                 </div>
 
+                <script >
+                    function verificarPasswords() {
 
+                        // Ontenemos los valores de los campos de contraseñas
+                        pass1 = document.getElementById('contrasena0');
+                        pass2 = document.getElementById('contrasena');
+
+                        // Verificamos si las constraseñas no coinciden
+                        if (pass1.value !== pass2.value) {
+
+                            // Si las constraseñas no coinciden mostramos un mensaje
+                            document.getElementById("error").classList.add("mostrar");
+
+                            return false;
+                        } else {
+
+                            // Si las contraseñas coinciden ocultamos el mensaje de error
+                            document.getElementById("error").classList.remove("mostrar");
+
+                            // Mostramos un mensaje mencionando que las Contraseñas coinciden
+                            document.getElementById("ok").classList.remove("ocultar");
+
+                            // Desabilitamos el botón de login
+                            document.getElementById("login").disabled = true;
+
+                            // Refrescamos la página (Simulación de envío del formulario)
+                            setTimeout(function() {
+                                location.reload();
+                            }, 3000);
+
+                            return true;
+                        }
+
+                    }
+                </script>
                 <a href="<%= request.getContextPath()%>/LoginServlet" class="btn btn-danger">Cancelar</a>
-                <input type="submit" value="Guardar" class="btn btn-primary"/>
+                <input type="submit" id="login" value="Guardar" class="btn btn-primary"/>
                 <br>
                 <br>
+
             </form>
         </div>
         <div class="col"></div>

@@ -35,9 +35,8 @@ public class ViajesServlet extends HttpServlet {
 
 
             case "agregarViaje":
-                /*String correo2= request.getParameter("username");
-                int estudiantes_idcodigo2 = viajesDao.obteneridCorreo(correo2);*/
-
+                int codigo= Integer.parseInt(request.getParameter("id"));
+                request.setAttribute("codigo",codigo);
                 view = request.getRequestDispatcher("agregarViaje.jsp");
                 view.forward(request, response);
                 break;
