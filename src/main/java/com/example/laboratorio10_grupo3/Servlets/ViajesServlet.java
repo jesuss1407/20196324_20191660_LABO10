@@ -33,6 +33,16 @@ public class ViajesServlet extends HttpServlet {
                 break;
 
 
+            case "listarUnSoloViaje":
+                int idviaje= Integer.parseInt(request.getParameter("id"));
+                int codigo2 = Integer.parseInt(request.getParameter("codigoid"));
+                request.setAttribute("listaUnSoloViaje", viajesDao.listarUnSoloViaje(idviaje));
+                request.setAttribute("codigo",codigo2);
+                view = request.getRequestDispatcher("editarViaje.jsp");
+                view.forward(request, response);
+                break;
+
+
             case "agregarViaje":
                 int codigo = Integer.parseInt(request.getParameter("id"));
                 request.setAttribute("codigo", codigo);

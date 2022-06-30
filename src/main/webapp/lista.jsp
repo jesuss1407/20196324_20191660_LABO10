@@ -93,7 +93,7 @@
                 <%} else if (diff < 0) {%>
                 <td>
 
-                    <a href="<%=request.getContextPath()%>/ViajesServlet?action=editar&id=<%=viaje.getIdviajes()%>"
+                    <a href="<%=request.getContextPath()%>/ViajesServlet?action=listarUnSoloViaje&id=<%=viaje.getIdviajes()%>&codigoid=<%=viaje.getEstudiantes_idcodigo()%>"
                        type="button" class="btn btn-primary">
                         <i class="bi bi-pencil-square"></i>
                     </a>
