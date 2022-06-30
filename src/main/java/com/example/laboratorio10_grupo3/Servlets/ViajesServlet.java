@@ -25,7 +25,7 @@ public class ViajesServlet extends HttpServlet {
         RequestDispatcher view;
         switch (action) {
             case "listarViaje":
-                String correo= request.getParameter("username");
+                String correo = request.getParameter("username");
                 int estudiantes_idcodigo = viajesDao.obteneridCorreo(correo);
                 request.setAttribute("listaViaje", viajesDao.listarViaje(estudiantes_idcodigo));
                 view = request.getRequestDispatcher("lista.jsp");
@@ -34,8 +34,8 @@ public class ViajesServlet extends HttpServlet {
 
 
             case "agregarViaje":
-                int codigo= Integer.parseInt(request.getParameter("id"));
-                request.setAttribute("codigo",codigo);
+                int codigo = Integer.parseInt(request.getParameter("id"));
+                request.setAttribute("codigo", codigo);
                 view = request.getRequestDispatcher("agregarViaje.jsp");
                 view.forward(request, response);
                 break;
@@ -45,29 +45,29 @@ public class ViajesServlet extends HttpServlet {
                     String idcompraviajesString = request.getParameter("id");
                     String estudiantes_idcodigoString = request.getParameter("codigoid");
                     String idviajesString = request.getParameter("id");
-                    int  idcompraviajes= 0;
-                    int  estudiantesidcodigo= 0;
-                    int idviajes =0;
+                    int idcompraviajes = 0;
+                    int estudiantesidcodigo = 0;
+                    int idviajes = 0;
                     try {
                         idcompraviajes = Integer.parseInt(idcompraviajesString);
                         estudiantesidcodigo = Integer.parseInt(estudiantes_idcodigoString);
                         idviajes = Integer.parseInt(idviajesString);
+                        request.setAttribute("listaViaje", viajesDao.listarViaje(estudiantesidcodigo));
                     } catch (NumberFormatException ex) {
                         response.sendRedirect("ViajesServlet");
                     }
 
-                    ViajesBean viaje1 = viajesDao.obtenerCompraViaje(estudiantesidcodigo,idcompraviajes);
+                    ViajesBean viaje1 = viajesDao.obtenerCompraViaje(estudiantesidcodigo, idviajes);
                     ViajesBean viaje2 = viajesDao.obtenerViaje(idviajes);
 
-                    if (viaje1 != null && viaje2 != null) {
-                        viajesDao.borrarcompraViajes(estudiantesidcodigo,idcompraviajes);
+                    if ( viaje2 != null) {
+                        viajesDao.borrarcompraViajes(estudiantesidcodigo, idviajes);
                         viajesDao.borrarViaje(idviajes);
-
                     }
-
                 }
 
-                response.sendRedirect("ViajesServlet");
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("lista.jsp");
+                requestDispatcher.forward(request, response);
                 break;
         }
     }

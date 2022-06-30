@@ -109,12 +109,12 @@ public class ViajesDao extends DaoBase {
 
     }
 
-    public void borrarcompraViajes(int estudiantes_idcodigo ,int idcompraviajes) {
+    public void borrarcompraViajes(int estudiantes_idcodigo ,int idviajes) {
         try (Connection conn = this.getConection();
-             PreparedStatement pstmt = conn.prepareStatement("DELETE FROM compraviajes WHERE estudiantes_idcodigo = ? and idcompraviajes = ?")) {
+             PreparedStatement pstmt = conn.prepareStatement("DELETE FROM compraviajes WHERE estudiantes_idcodigo = ? and viajes_idviajes = ?")) {
 
             pstmt.setInt(1, estudiantes_idcodigo);
-            pstmt.setInt(2, idcompraviajes);
+            pstmt.setInt(2, idviajes);
             pstmt.executeUpdate();
 
         } catch (SQLException ex) {
