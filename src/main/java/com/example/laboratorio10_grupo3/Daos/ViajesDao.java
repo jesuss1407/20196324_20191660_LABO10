@@ -191,4 +191,23 @@ public class ViajesDao extends DaoBase {
 
     }
 
+    public void actualizarViaje(ViajesBean viaje) {
+        String sql = "update viajes set fecha_viaje = ?, ciudad_origen=?, ciudad_destino=?, seguro= ?\n" +
+                "                where idviajes= ?";
+
+        try (Connection conn = this.getConection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);) {
+            pstmt.setString(1, viaje.getFecha_viaje());
+            pstmt.setString(2, viaje.getCiudad_origen());
+            pstmt.setString(3, viaje.getCiudad_destino());
+            pstmt.setString(4, viaje.getSeguro());
+            pstmt.setInt(5, viaje.getIdviajes());
+            pstmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            System.out.println("Hubo un error en la conexión obteneter actualizar!");
+            ex.printStackTrace();
+        }
+    }
+
 }

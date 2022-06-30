@@ -105,6 +105,19 @@ public class ViajesServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath()+"/ViajesServlet?action=agregarViaje");
                 break;
 
+            case "actualizar":
+                ViajesBean viaje = new ViajesBean();
+                viaje.setFecha_viaje(request.getParameter("fecha"));
+                viaje.setCiudad_origen(request.getParameter("ciudad_origen"));
+                viaje.setCiudad_destino(request.getParameter("ciudad_destino"));
+                viaje.setSeguro(request.getParameter("seguro"));
+                viaje.setIdviajes(Integer.parseInt(request.getParameter("idviajes")));
+                viajesDao.actualizarViaje(viaje);
+
+                response.sendRedirect("ViajesServlet?action=listar");
+
+                break;
+
         }
     }
 }
