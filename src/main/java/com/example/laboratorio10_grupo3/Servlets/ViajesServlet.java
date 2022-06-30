@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.Random;
 
-@WebServlet(name = "ViajesServlet", value = {"/ViajesServlet"})
+@WebServlet(name = "ViajesServlet", urlPatterns = {"/ViajesServlet"})
 public class ViajesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -101,9 +101,11 @@ public class ViajesServlet extends HttpServlet {
                 viajesDao.crear1(idviajes,fecha_viaje,ciudad_origen,ciudad_destino,costo_total,seguro);
                 viajesDao.crear2(idcodigo,idviajes,cantidadcompra);
 
-
-                response.sendRedirect(request.getContextPath()+"/ViajesServlet?action=agregarViaje");
+                response.sendRedirect(request.getContextPath()+"/UsuarioServlet?action=lista&id="+idcodigo);
                 break;
+
+
+
 
         }
     }

@@ -1,6 +1,7 @@
 package com.example.laboratorio10_grupo3.Servlets;
 import com.example.laboratorio10_grupo3.Beans.EstudianteBean;
 import com.example.laboratorio10_grupo3.Daos.EstudianteDao;
+import com.example.laboratorio10_grupo3.Daos.ViajesDao;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,7 +14,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 
-@WebServlet(name = "UsuarioServlet", value = {"/UsuarioServlet"})
+@WebServlet(name = "UsuarioServlet", urlPatterns = {"/UsuarioServlet"})
 public class UsuarioServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -26,8 +27,12 @@ public class UsuarioServlet extends HttpServlet {
         switch (action) {
             case "lista":
                 //request.setAttribute("listaEmpleados", estudianteDao.listarViajes());
-                view = request.getRequestDispatcher("lista.jsp");
-                view.forward(request, response);
+                ViajesDao viajesDao = new ViajesDao();
+                int estudiantes_idcodigo = Integer.parseInt(request.getParameter("id"));
+
+                request.setAttribute("listaViaje", viajesDao.listarViaje(estudiantes_idcodigo));
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("lista.jsp");
+                requestDispatcher.forward(request, response);
                 break;
             case "agregar":
                 view = request.getRequestDispatcher("/usuarioNuevo.jsp");
