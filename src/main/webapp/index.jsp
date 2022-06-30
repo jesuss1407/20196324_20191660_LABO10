@@ -49,7 +49,7 @@
                         <label for="floatingPassword">Contraseña</label>
                     </div>
                     <% if (request.getParameter("error") != null) { %>
-                    <div class="text-danger mb-2">Error en usuario o contraseña</div>
+                    <div class="text-danger mb-2">Error en usuario,contraseña o no pertenece al area de telecomunicaciones</div>
                     <%}%>
                     <button class="w-100 btn btn-lg btn-primary" type="submit">Ingresar</button>
                     <br>

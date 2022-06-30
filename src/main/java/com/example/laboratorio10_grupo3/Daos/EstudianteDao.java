@@ -44,7 +44,7 @@ public class EstudianteDao extends DaoBase {
         EstudianteBean estudiante = null;
 
         //String sql = "select * from employees_credentials where email = ? and password = sha2(?,256);";
-        String sql = "select * from estudiantes where correo = ? and contrasena_hashed = sha2(?,256);";
+        String sql = "select * from estudiantes where correo = ? and contrasena_hashed = sha2(?,256) and especialidad = 'telecomunicaciones'; ";
         try (Connection connection = this.getConection();
              PreparedStatement pstmt = connection.prepareStatement(sql);) {
 

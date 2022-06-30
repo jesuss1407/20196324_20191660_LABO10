@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet {
 
         EstudianteBean estudiante = estudianteDao.validarUsuarioPassword(usuario, contrasena);
 
-        if (estudiante != null) { //existe usuario y password
+        if (estudiante != null ) { //existe usuario y password
             HttpSession session = request.getSession();
             session.setAttribute("empleadoLogueado", estudiante);
             session.setMaxInactiveInterval(60 * 10);
