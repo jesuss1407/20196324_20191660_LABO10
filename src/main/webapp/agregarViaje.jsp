@@ -53,7 +53,7 @@
                                         <div class="col-md-6 mb-4 d-flex align-items-center">
 
                                             <div class="form-outline datepicker w-100">
-                                                <input type="text" class="form-control form-control-lg" id="fecha_viaje" name="fecha_viaje" />
+                                                <input type="date" class="form-control form-control-lg" id="fecha_viaje" name="fecha_viaje" required />
                                                 <label for="fecha_viaje" class="form-label">Fecha de ida</label>
                                             </div>
 
@@ -113,7 +113,7 @@
                                         <div class="col-md-6 mb-4 pb-2">
 
                                             <div class="form-outline">
-                                                <input type="number" id="cantidadcompra" name="cantidadcompra" class="form-control form-control-lg"  min="1" max="5"/>
+                                                <input type="number" id="cantidadcompra" name="cantidadcompra" class="form-control form-control-lg"  min="1" max="5" required/>
                                                 <label class="form-label" for="cantidadcompra">Cantidad de boletos</label>
                                             </div>
 

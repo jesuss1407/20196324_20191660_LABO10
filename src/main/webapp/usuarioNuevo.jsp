@@ -51,7 +51,17 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="especialidad">Especialidad</label>
-                    <input type="text" class="form-control form-control-sm" id="especialidad" name="especialidad" required>
+                    <select class="form-control" id="especialidad" name="especialidad" >
+                        <option value="1" disabled>Escoge una opcion</option>
+                        <option value="telecomunicaciones">Telecomunicaciones</option>
+                        <option value="industrial">Industrial</option>
+                        <option value="minas">Minas</option>
+                        <option value="informatica">Informatica</option>
+                        <option value="civil">Civil</option>
+                        <option value="electronica">Electronica</option>
+                        <option value="mecatronica">Mecatronica</option>
+                    </select>
+
                 </div>
 
                 <div class="mb-3">
