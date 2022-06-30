@@ -59,8 +59,7 @@ public class ViajesServlet extends HttpServlet {
 
         switch (action){
             case "crear":
-
-                String code = request.getParameter("idcodigo");
+                String code = request.getParameter("idd");
                 int idcodigo = Integer.parseInt(code);
                 int idviajes= value;
                 String fecha_reserva= request.getParameter("fecha_reserva");
