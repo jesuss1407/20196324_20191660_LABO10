@@ -138,7 +138,7 @@
 
 
                                     <div class="mt-4 pt-2">
-                                        <input href="<%=request.getContextPath()%>/ViajesServlet?action=agregarViaje&id=<%=empleadoLogueado.getIdcodigo()%>" class="btn btn-primary btn-lg" type="submit" value="Guardar cambios" />
+                                        <input href="<%=request.getContextPath()%>/ViajesServlet?action=actualizarViaje&idd=<%=viaje.getIdviajes()%>" class="btn btn-primary btn-lg" type="submit" value="Guardar cambios" />
                                     </div>
 
                                 </form>

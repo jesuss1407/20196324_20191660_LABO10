@@ -116,13 +116,21 @@ public class ViajesServlet extends HttpServlet {
                 break;
 
             case "actualizar":
+                String code2 = request.getParameter("idd");
                 ViajesBean viaje = new ViajesBean();
                 viaje.setFecha_viaje(request.getParameter("fecha"));
                 viaje.setCiudad_origen(request.getParameter("ciudad_origen"));
                 viaje.setCiudad_destino(request.getParameter("ciudad_destino"));
                 viaje.setSeguro(request.getParameter("seguro"));
-                viaje.setIdviajes(Integer.parseInt(request.getParameter("idviajes")));
+
+                int idviajes2 = Integer.parseInt(code2);
+                viaje.setIdviajes(idviajes2);
+                int cantidadcompra2 = Integer.parseInt(request.getParameter("cantidadcompra"));
+                int costo_total2=200*cantidadcompra2;;
+                viaje.setIdviajes(costo_total2);
+
                 viajesDao.actualizarViaje(viaje);
+                viajesDao.actualizarViaje2(idviajes2,cantidadcompra2);
 
                 response.sendRedirect("ViajesServlet?action=listar");
 

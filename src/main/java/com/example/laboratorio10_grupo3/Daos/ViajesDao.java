@@ -192,7 +192,7 @@ public class ViajesDao extends DaoBase {
     }
 
     public void actualizarViaje(ViajesBean viaje) {
-        String sql = "update viajes set fecha_viaje = ?, ciudad_origen=?, ciudad_destino=?, seguro= ?\n" +
+        String sql = "update viajes set fecha_viaje = ?, ciudad_origen=?, ciudad_destino=?, costo_unitario= ?,seguro= ?\n" +
                 "                where idviajes= ?";
 
         try (Connection conn = this.getConection();
@@ -200,8 +200,24 @@ public class ViajesDao extends DaoBase {
             pstmt.setString(1, viaje.getFecha_viaje());
             pstmt.setString(2, viaje.getCiudad_origen());
             pstmt.setString(3, viaje.getCiudad_destino());
-            pstmt.setString(4, viaje.getSeguro());
-            pstmt.setInt(5, viaje.getIdviajes());
+            pstmt.setInt(4, viaje.getCosto_total());
+            pstmt.setString(5, viaje.getSeguro());
+            pstmt.setInt(6, viaje.getIdviajes());
+            pstmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            System.out.println("Hubo un error en la conexión obteneter actualizar!");
+            ex.printStackTrace();
+        }
+    }
+    public void actualizarViaje2(int idviaje, int cantidadcompra) {
+        String sql = "update compraviajes set cantidadcompra= ?\n" +
+                "                where viajes_idviajes= ?";
+
+        try (Connection conn = this.getConection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);) {
+            pstmt.setInt(1, cantidadcompra);
+            pstmt.setInt(2, idviaje);
             pstmt.executeUpdate();
 
         } catch (SQLException ex) {
