@@ -13,6 +13,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%@ page import="java.util.Random" %>
+<%@ page import="java.time.LocalDate" %>
 <jsp:useBean id="codigo" scope="request" type="java.lang.Integer" />
 <jsp:useBean id="empleadoLogueado" class="com.example.laboratorio10_grupo3.Beans.EstudianteBean"
              scope="session" type="com.example.laboratorio10_grupo3.Beans.EstudianteBean"/>
@@ -48,12 +49,14 @@
 
                                 <form method="POST" action="ViajesServlet?action=crear&idd=<%= code%>">
                                     <input disabled class="form-control form-control-lg" id="idcodigo" name="idcodigo" value=<%=code%>>
+                                    <label for="idcodigo" class="form-label">Cliente</label>
                                     <br>
                                     <div class="row">
                                         <div class="col-md-6 mb-4 d-flex align-items-center">
-
+                                            <%  LocalDate today = LocalDate.now();
+                                                LocalDate tomorrow = today.plusDays(1);%>
                                             <div class="form-outline datepicker w-100">
-                                                <input type="date" class="form-control form-control-lg" id="fecha_viaje" name="fecha_viaje" required />
+                                                <input type="date" class="form-control form-control-lg" id="fecha_viaje" name="fecha_viaje" required min="<%=tomorrow%>"/>
                                                 <label for="fecha_viaje" class="form-label">Fecha de ida</label>
                                             </div>
 
@@ -130,7 +133,7 @@
 
 
                                     <div class="mt-4 pt-2">
-                                        <input href="<%=request.getContextPath()%>/LoginServlet" class="btn btn-primary btn-lg" type="submit" value="Agregar" />
+                                        <input href="<%=request.getContextPath()%>/ViajesServlet?action=agregarViaje&id=<%=empleadoLogueado.getIdcodigo()%>" class="btn btn-primary btn-lg" type="submit" value="Agregar" />
                                     </div>
 
                                 </form>

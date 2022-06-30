@@ -32,7 +32,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link "
-                           href="<%=request.getContextPath()%>/ViajesServlet">
+                           href="<%=request.getContextPath()%>/UsuarioServlet?action=lista&id=<%=empleadoLogueado.getIdcodigo()%>">
                             Mis viajes
                         </a>
                     </li>
