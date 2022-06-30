@@ -44,20 +44,27 @@ public class ViajesServlet extends HttpServlet {
                 if (request.getParameter("id") != null) {
                     String idcompraviajesString = request.getParameter("id");
                     String estudiantes_idcodigoString = request.getParameter("codigoid");
+                    String idviajesString = request.getParameter("id");
                     int  idcompraviajes= 0;
                     int  estudiantesidcodigo= 0;
+                    int idviajes =0;
                     try {
                         idcompraviajes = Integer.parseInt(idcompraviajesString);
                         estudiantesidcodigo = Integer.parseInt(estudiantes_idcodigoString);
+                        idviajes = Integer.parseInt(idviajesString);
                     } catch (NumberFormatException ex) {
                         response.sendRedirect("ViajesServlet");
                     }
 
-                    ViajesBean viaje = viajesDao.obtenerViaje(estudiantesidcodigo,idcompraviajes);
+                    ViajesBean viaje1 = viajesDao.obtenerCompraViaje(estudiantesidcodigo,idcompraviajes);
+                    ViajesBean viaje2 = viajesDao.obtenerViaje(idviajes);
 
-                    if (viaje != null) {
-                        viajesDao.borrarViaje(estudiantesidcodigo,idcompraviajes);
+                    if (viaje1 != null && viaje2 != null) {
+                        viajesDao.borrarcompraViajes(estudiantesidcodigo,idcompraviajes);
+                        viajesDao.borrarViaje(idviajes);
+
                     }
+
                 }
 
                 response.sendRedirect("ViajesServlet");

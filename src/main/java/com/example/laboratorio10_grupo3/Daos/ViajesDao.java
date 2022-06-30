@@ -109,7 +109,7 @@ public class ViajesDao extends DaoBase {
 
     }
 
-    public void borrarViaje(int estudiantes_idcodigo ,int idcompraviajes) {
+    public void borrarcompraViajes(int estudiantes_idcodigo ,int idcompraviajes) {
         try (Connection conn = this.getConection();
              PreparedStatement pstmt = conn.prepareStatement("DELETE FROM compraviajes WHERE estudiantes_idcodigo = ? and idcompraviajes = ?")) {
 
@@ -121,7 +121,18 @@ public class ViajesDao extends DaoBase {
             ex.printStackTrace();
         }
     }
-    public ViajesBean obtenerViaje(int estudiantes_idcodigo ,int idcompraviajes) {
+    public void borrarViaje(int idviajes) {
+        try (Connection conn = this.getConection();
+             PreparedStatement pstmt = conn.prepareStatement("DELETE FROM viajes WHERE idviajes = ?")) {
+
+            pstmt.setInt(1, idviajes);
+            pstmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    public ViajesBean obtenerCompraViaje(int estudiantes_idcodigo ,int idcompraviajes) {
 
         ViajesBean p = null;
 
@@ -133,17 +144,47 @@ public class ViajesDao extends DaoBase {
             pstmt.setInt(2, idcompraviajes);
 
             try (ResultSet rs = pstmt.executeQuery();) {
-                p = new ViajesBean();
-                p.setEstudiantes_idcodigo(rs.getInt(1));
-                p.setIdviajes(rs.getInt(2));
-                p.setIdcompraviajes(rs.getInt(3));
-                p.setCantidadcompra(rs.getInt(4));
-                p.setFecha_reserva(rs.getString(5));
-
+                while (rs.next()) {
+                    p = new ViajesBean();
+                    p.setEstudiantes_idcodigo(rs.getInt(1));
+                    p.setViajes_idviajes(rs.getInt(2));
+                    p.setIdcompraviajes(rs.getInt(3));
+                    p.setCantidadcompra(rs.getInt(4));
+                    p.setFecha_reserva(rs.getString(5));
+                }
             }
 
         } catch (SQLException e) {
             System.out.println("Hubo un error en la conexión obteneter super!");
+            e.printStackTrace();
+        }
+        return p;
+
+    }
+    public ViajesBean obtenerViaje(int idviajes) {
+
+        ViajesBean p = null;
+
+        String sql = "select * FROM viajes WHERE  idviajes = ?  ";
+
+        try (Connection conn = this.getConection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);) {
+            pstmt.setInt(1, idviajes);
+
+            try (ResultSet rs = pstmt.executeQuery();) {
+                while (rs.next()){
+                    p = new ViajesBean();
+                    p.setIdviajes(rs.getInt(1));
+                    p.setFecha_viaje(rs.getString(2));
+                    p.setCiudad_origen(rs.getString(3));
+                    p.setCiudad_destino(rs.getString(4));
+                    p.setCosto_unitario(rs.getInt(5));
+                    p.setSeguro(rs.getString(6));
+                }
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Hubo un error en la conexión en obtenerViaje!");
             e.printStackTrace();
         }
         return p;
