@@ -99,7 +99,7 @@
                     </a>
 
                     <a onclick="return confirm('¿Estas seguro de borrar?');"
-                       href="<%=request.getContextPath()%>/ViajesServlet?action=editar&id=<%=viaje.getIdviajes()%>"
+                       href="<%=request.getContextPath()%>/ViajesServlet?action=borrar&id=<%=viaje.getIdviajes()%>&codigoid=<%=viaje.getEstudiantes_idcodigo()%>"
                        type="button" class="btn btn-danger">
                         <i class="bi bi-trash"></i>
                     </a>

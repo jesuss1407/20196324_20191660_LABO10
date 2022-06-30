@@ -10,6 +10,24 @@ public class ViajesBean {
     private String seguro;
     private int cantidadcompra;
     private int costo_total;
+    private int  estudiantes_idcodigo;
+    private int  idcompraviajes;
+
+    public int getIdcompraviajes() {
+        return idcompraviajes;
+    }
+
+    public void setIdcompraviajes(int idcompraviajes) {
+        this.idcompraviajes = idcompraviajes;
+    }
+
+    public int getEstudiantes_idcodigo() {
+        return estudiantes_idcodigo;
+    }
+
+    public void setEstudiantes_idcodigo(int estudiantes_idcodigo) {
+        this.estudiantes_idcodigo = estudiantes_idcodigo;
+    }
 
     public int getIdviajes() {
         return idviajes;

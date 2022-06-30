@@ -27,7 +27,6 @@ public class ViajesServlet extends HttpServlet {
             case "listarViaje":
                 String correo= request.getParameter("username");
                 int estudiantes_idcodigo = viajesDao.obteneridCorreo(correo);
-
                 request.setAttribute("listaViaje", viajesDao.listarViaje(estudiantes_idcodigo));
                 view = request.getRequestDispatcher("lista.jsp");
                 view.forward(request, response);
@@ -41,6 +40,28 @@ public class ViajesServlet extends HttpServlet {
                 view.forward(request, response);
                 break;
 
+            case "borrar":
+                if (request.getParameter("id") != null) {
+                    String idcompraviajesString = request.getParameter("id");
+                    String estudiantes_idcodigoString = request.getParameter("codigoid");
+                    int  idcompraviajes= 0;
+                    int  estudiantesidcodigo= 0;
+                    try {
+                        idcompraviajes = Integer.parseInt(idcompraviajesString);
+                        estudiantesidcodigo = Integer.parseInt(estudiantes_idcodigoString);
+                    } catch (NumberFormatException ex) {
+                        response.sendRedirect("ViajesServlet");
+                    }
+
+                    ViajesBean viaje = viajesDao.obtenerViaje(estudiantesidcodigo,idcompraviajes);
+
+                    if (viaje != null) {
+                        viajesDao.borrarViaje(estudiantesidcodigo,idcompraviajes);
+                    }
+                }
+
+                response.sendRedirect("ViajesServlet");
+                break;
         }
     }
 

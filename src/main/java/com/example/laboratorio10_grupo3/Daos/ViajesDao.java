@@ -9,7 +9,7 @@ public class ViajesDao extends DaoBase {
     public ArrayList<ViajesBean> listarViaje(int estudiantes_idcodigo){
 
         ArrayList<ViajesBean> listaViaje = new ArrayList<>();
-        String sql = "select v.idviajes, cv.fecha_reserva, v.fecha_viaje, v.ciudad_origen, v.ciudad_destino, v.seguro, cv.cantidadcompra, cv.cantidadcompra*(v.costo_unitario)\n" +
+        String sql = "select v.idviajes, cv.fecha_reserva, v.fecha_viaje, v.ciudad_origen, v.ciudad_destino, v.seguro, cv.cantidadcompra, cv.cantidadcompra*(v.costo_unitario),cv.estudiantes_idcodigo\n" +
                 "from compraviajes cv \n" +
                 "left join viajes v on cv.viajes_idviajes = v.idviajes\n" +
                 "where estudiantes_idcodigo= ?\n" +
@@ -32,6 +32,7 @@ public class ViajesDao extends DaoBase {
                     p.setSeguro(resultSet.getString(6));
                     p.setCantidadcompra(resultSet.getInt(7));
                     p.setCosto_total(resultSet.getInt(8));
+                    p.setEstudiantes_idcodigo(resultSet.getInt(9));
 
                     listaViaje.add(p);
                 }
@@ -108,7 +109,45 @@ public class ViajesDao extends DaoBase {
 
     }
 
+    public void borrarViaje(int estudiantes_idcodigo ,int idcompraviajes) {
+        try (Connection conn = this.getConection();
+             PreparedStatement pstmt = conn.prepareStatement("DELETE FROM compraviajes WHERE estudiantes_idcodigo = ? and idcompraviajes = ?")) {
 
+            pstmt.setInt(1, estudiantes_idcodigo);
+            pstmt.setInt(2, idcompraviajes);
+            pstmt.executeUpdate();
 
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    public ViajesBean obtenerViaje(int estudiantes_idcodigo ,int idcompraviajes) {
+
+        ViajesBean p = null;
+
+        String sql = "select * FROM compraviajes WHERE estudiantes_idcodigo = ? and idcompraviajes = ?; ";
+
+        try (Connection conn = this.getConection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);) {
+            pstmt.setInt(1, estudiantes_idcodigo);
+            pstmt.setInt(2, idcompraviajes);
+
+            try (ResultSet rs = pstmt.executeQuery();) {
+                p = new ViajesBean();
+                p.setEstudiantes_idcodigo(rs.getInt(1));
+                p.setIdviajes(rs.getInt(2));
+                p.setIdcompraviajes(rs.getInt(3));
+                p.setCantidadcompra(rs.getInt(4));
+                p.setFecha_reserva(rs.getString(5));
+
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Hubo un error en la conexión obteneter super!");
+            e.printStackTrace();
+        }
+        return p;
+
+    }
 
 }
